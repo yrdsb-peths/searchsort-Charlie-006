@@ -54,5 +54,4 @@ public class BinarySearchTest {
         int result = binarySearch.find(arr, target);
         assertEquals(0, result);
     }
-
 }
