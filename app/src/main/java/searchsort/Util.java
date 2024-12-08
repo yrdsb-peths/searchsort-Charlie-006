@@ -22,9 +22,13 @@ public class Util {
      */
     public static int[] shuffle(int[] arr, Long seed) {
         // Initialize a Random object with the given seed if provided
-        Random random = (seed != null) ? new Random(seed) : new Random();
-        // Note: This generates a random number between 0 and 5:
+        Random random = (seed != null) ? new Random(seed) : new Random();       
+         // Note: This generates a random number between 0 and 5:
         // int randomNum = random.nextInt(6);
+        for (int i = arr.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            exch(arr, i, j);
+        }
 
         return arr;
     }
@@ -33,7 +37,9 @@ public class Util {
      * Exchange the elements at indices i and j in the array arr.
      */
     public static void exch(int[] arr, int i, int j) {
-
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     /**
@@ -41,17 +47,32 @@ public class Util {
      */
     public static int[] generateRandomArray(int n, Long seed) {
         // Create a new integer array of size n
+        int[] arr = new int[n];
 
         // Shuffle the array using the Shuffle method with the given seed
-
+        for (int i = 0; i < n; i++) {
+            arr[i] = i;
+        }
         // Return the shuffled array
-        return new int[n];
+        shuffle(arr, seed);
+
+        return arr;
     }
 
     /**
      * Check if the array arr is sorted in ascending order.
      */
     public static boolean isSorted(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return true;
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                return false;
+            }
+        }
+
         return true;
     }
 }
