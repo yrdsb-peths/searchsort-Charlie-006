@@ -9,7 +9,7 @@ public abstract class Sort {
      * Sort the array arr.
      */
     abstract public void sort(int[] arr);
-
+    
     /**
      * Sort the array and return the time taken in milliseconds.
      */

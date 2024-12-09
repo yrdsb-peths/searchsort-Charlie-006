@@ -13,8 +13,12 @@ public class BinarySearch extends Search {
     public int find(int[] arr, int target) {
         int low = 0;
         int high = arr.length - 1;
-        
-        if(arr[0] == target){
+
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        if (arr[0] == target) {
             return 0;
         }
 
@@ -39,25 +43,31 @@ public class BinarySearch extends Search {
      */
     @Override
     public int recursiveFind(int[] arr, int target) {
-        if(arr[0] == target){
+        if (arr[0] == target) {
             return 0;
         }
+
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
         return recursiveFindHelper(arr, target, 0, arr.length - 1);
     }
-        private int recursiveFindHelper(int[] arr, int target, int low, int high) {
-            if (low > high) {
-                return -1;
-            }
 
-            int mid = (high + low) / 2;
-            int cur = arr[mid];
+    private int recursiveFindHelper(int[] arr, int target, int low, int high) {
+        if (low > high) {
+            return -1;
+        }
 
-            if (cur == target) {
-                return mid;
-            } else if (cur < target) {
-                return recursiveFindHelper(arr, target, mid + 1, high);
-            } else {
-                return recursiveFindHelper(arr, target, low, mid - 1);
-            }
+        int mid = (high + low) / 2;
+        int cur = arr[mid];
+
+        if (cur == target) {
+            return mid;
+        } else if (cur < target) {
+            return recursiveFindHelper(arr, target, mid + 1, high);
+        } else {
+            return recursiveFindHelper(arr, target, low, mid - 1);
         }
     }
+}

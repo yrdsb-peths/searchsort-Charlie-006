@@ -16,7 +16,6 @@ public class InsertionSort {
                 arr[curIndex + 1] = arr[curIndex];
                 curIndex--;
             }
-
             arr[curIndex + 1] = curNumber;
             System.out.println(Arrays.toString(arr));
         }
